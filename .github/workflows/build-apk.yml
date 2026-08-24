@@ -23,10 +23,34 @@ jobs:
           mkdir -p build/source
           cat project-zip/SadaTonesProject.b64.part* | tr -d '\n\r' > /tmp/SadaTonesProject.zip.b64
           base64 -d /tmp/SadaTonesProject.zip.b64 > /tmp/SadaTonesProject.zip
-          unzip -t /tmp/SadaTonesProject.zip
-          unzip -q /tmp/SadaTonesProject.zip -d build/source
+          python3 - <<'PY'
+          import pathlib
+          import shutil
+          import zipfile
+
+          archive = pathlib.Path('/tmp/SadaTonesProject.zip')
+          destination = pathlib.Path('build/source')
+          destination.mkdir(parents=True, exist_ok=True)
+
+          with zipfile.ZipFile(archive) as zip_file:
+              bad = zip_file.testzip()
+              if bad:
+                  raise SystemExit(f'Corrupt ZIP entry: {bad}')
+              for info in zip_file.infolist():
+                  normalized = info.filename.replace('\\', '/').lstrip('/')
+                  if not normalized:
+                      continue
+                  target = destination / normalized
+                  if info.is_dir() or normalized.endswith('/'):
+                      target.mkdir(parents=True, exist_ok=True)
+                      continue
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  with zip_file.open(info) as source, target.open('wb') as output:
+                      shutil.copyfileobj(source, output)
+          PY
           test -f build/source/settings.gradle
           test -f build/source/app/src/main/java/com/sadatones/app/MainActivity.java
+          find build/source -maxdepth 3 -type f | sort
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
