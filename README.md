@@ -12,8 +12,8 @@ The app is built with:
 
 ## Implemented screens
 
-- Home / Ringtones
-- Wallpaper catalog
+- Home / Ringtones with a dark 5000+ tones hero, trending searches, category grid, and Hot & Trending list
+- Wallpaper catalog with a 1000+ wallpapers hero, trending chips, category grid, and two-column wallpaper gallery
 - Favorites
 - AI Studio
 - Request ringtone
@@ -25,8 +25,8 @@ The app is built with:
 
 ## Implemented features
 
-- Generated ringtone catalog across 20+ categories.
-- Generated wallpaper catalog across multiple HD categories.
+- Original generated ringtone catalog across 20+ categories with 250+ default placeholder entries.
+- Original generated wallpaper catalog across 10 HD-style categories with 120 default placeholder entries.
 - Search and category filters.
 - Preview tones with MediaPlayer.
 - Generate original WAV tones on-device.
