@@ -59,6 +59,19 @@ Sada Tones implements the same functional product map under a different identity
 - Pro monetization screen.
 - Settings/privacy/help area.
 
+## Updated visual/content direction
+
+The current build uses original placeholder catalogs and a closer screen structure inspired by the public screenshots:
+
+- Dark mobile-first ringtone home with a prominent 5000+ HD ringtone hero.
+- Trending search chips for common ringtone terms.
+- Two-column Browse Categories cards.
+- Hot & Trending ringtone rows with cover art, preview, ringtone-set shortcut, favorite/download state, and detail actions.
+- Wallpaper screen with a 1000+ wallpapers hero, wallpaper categories, and a two-column gallery.
+- AI screen with default generated wallpaper results, AI song prompt, and AI wallpaper prompt.
+- Request screen with ringtone title, singer, email, and local draft saving.
+- Tone details with large cover, waveform preview, and quick action buttons for ringtone, contact, notification, and alarm.
+
 ## Known limitation
 
 The original app could not be installed and tested in this Codex environment because there is no Android SDK, no adb, and no configured Android emulator or Play Store device session. The implementation is based on the Google Play listing, public screenshots/description, and Android platform behavior.
